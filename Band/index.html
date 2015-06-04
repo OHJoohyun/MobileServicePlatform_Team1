@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <meta http-equiv="refresh" content="10; url=index.html"> -->
+
+    <title> Schedule Band </title>
+
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="js/jquerymobile-swipeupdown.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+ 	<link rel="stylesheet" href="css/jquery.mobile.min.css" /> 
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body onload="getToday()">
+	<div data-role="page" id="main">
+    	<div data-role="header" align="center" id="main_header">
+    		<h1 id="textbox"></h1>
+    		<a href="#" id="close" data-role="button" data-icon="delete" data-iconpos="notext" onclick="deleteTable()">Close</a>
+    	</div><!-- /header -->
+    
+    	<div data-role="content" id="main_content">
+    		<div id="p_schedule">
+  
+			</div>
+			
+			<div id="g_schedule">
+
+			</div>
+			
+    	</div><!-- /content -->
+	
+		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#add" class="ui-btn-b ui-corner-all" data-icon="plus"> Add </a></li>
+				<li><button class="ui-btn ui-btn-b ui-corner-all" onclick="getToday()" data-icon="back"> Today </button></li>
+			</ul>
+		</div>	
+		</div> <!-- /footer  -->
+	</div><!-- /page -->
+
+	<!-- Detail Page -->
+	<div data-role="page" id="detail">
+    	<div data-role="header" align="center">
+        	<h1 id="detail_textbox"></h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+        	<ul data-role="listview" data-inset="true" data-filter="false" id="schedule_list">
+				<li><p id="contents" style="font-size:15px"></p></li>
+				<li><p id="time" style="font-size:15px"></p></li>
+				<li><p id="place" style="font-size:15px"></p></li>
+				<li><a href="#contact" data-rel="dialog" onclick="getContact()"><center>SHARE</center></a></li>
+			</ul>
+    	</div><!-- /content -->
+		
+		
+		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+			<li><a href="#main" class="ui-btn ui-btn-b ui-corner-all" data-role="button" data-icon="back"> Back </a></li>
+			</ul>
+		</div>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	
+	
+	<div data-role="page" id="add">
+    	<div data-role="header" align="center">
+        	<h1 id="textbox"> 일정 추가 </h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+		<div data-role="collapsibleset" data-theme="a" data-content-theme="a">
+			<div data-role="collapsible">
+				<h1>날짜</h1>
+				<input id="my_date" type="date" data-role="datebox" data-options='{"mode": "datebox", "overrideDateFormat": "%m/%d/%Y"}' />
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>시간</h1>
+				<input id="my_time" type="time" data-role="timebox"/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>제목</h1>
+				<input id="my_title" type="text" placeholder="일정 제목을 입력하세요."/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>내용</h1>
+				<input id="my_contents" type="text" placeholder="일정 내용을 입력하세요."/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>장소</h1>
+				<input id="my_place" type="text" placeholder="일정 장소를 입력하세요."/>
+			</div>
+		
+			<div data-role="collapsible">
+				<h1>알람</h1>
+    					<select name="alarm" id="my_alarm">
+        					<option value="10"> 10분 전 </option>
+        					<option value="30"> 30분 전</option>
+        					<option value="60"> 1시간 전 </option>
+        					<option value="1440"> 1일 전 </option>
+							<option value="10080"> 1주 전 </option>
+    					</select>
+			</div>
+			
+		</div>	
+    	</div><!-- /content -->
+		
+		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="insert()"> Ok </a></li>
+				<li><a href="index.html" class="ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
+			</ul>
+		</div>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	
+	
+	<div data-role="page" id="contact">
+    	<div data-role="header" align="center">
+        	<h1 id="textbox"> 연락처 </h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+	    	<form id="contactlist">
+	    	
+			</form>
+			
+			
+			
+			
+    	</div><!-- /content -->
+    	
+		<div data-role="footer" data-id="fool" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus"> Ok </a></li>
+				<li><a href="index.html" class="ui-btn ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
+			</ul>
+		</div>
+		</div><!-- /footer -->
+		
+
+	</div><!-- /page -->
+	
+	
+
+ 	<script>
+		var _date = getDate();
+		var _month = getMonth();
+		var _year = getYear();
+		var id = 0;
+
+		
+  
+		function getDay(){
+			var d = new Date();
+		  	var year = d.getFullYear();
+		  	var month = d.getMonth() + 1;
+		  	var date = d.getDate();
+			document.getElementById("textbox").innerHTML = _year + "." + _month + "." + _date;
+		}
+		
+		function getToday(){
+		  	var d = new Date();
+		  	var year = d.getFullYear();
+		  	var month = d.getMonth() + 1;
+		  	var date = d.getDate();
+			document.getElementById("textbox").innerHTML = year + "." + month + "." + date;
+
+			selectSchedule(year,month,date);
+
+			_year = year;
+			_month = month;
+			_date = date;
+		}
+		
+		function getDate(){
+			var d = new Date();
+			var date = d.getDate();
+			return date;
+		}
+		
+		function getMonth(){
+			var d = new Date();
+			var month = d.getMonth() + 1;
+			return month;
+		}
+		
+		function getYear(){
+			var d = new Date();
+			var year = d.getFullYear();
+			return year;
+		}
+		
+	 
+	function createDB(){
+		db = window.openDatabase("SCHEDULE","1.0","Personal Schedule",1024*1024);
+	}
+
+	function createTable_schedule(){
+		db.transaction(function(tx){
+		tx.executeSql("create table Schedule(id, year, month, date, hour, minute, title, contents, place, type)");
+		});
+	}
+
+	function insertSchedule(year, month, date, hour, minute, title, contents, place, type){
+		db.transaction(function(tx){
+			tx.executeSql("insert into Schedule values(?,?,?,?,?,?,?,?,?,?)", [id, year, month, date, hour, minute, title, contents, place, type]);
+			});
+		id = id + 1;
+	}
+
+	function selectSchedule(year,month,date) {
+
+		$("#p_schedule").html("<ul data-role='listview' data-inset='true' data-filter='false' id='personal'>");
+		$("#g_schedule").html("<ul data-role='listview' data-inset='true' data-filter='false' id='group'>");
+		$("#personal").append("<li data-role='list-divider'> 개인 </li>");
+		$("#group").append("<li data-role='list-divider'> 그룹 </li>");
+		
+		db.transaction(function(tx){
+			tx.executeSql("select * from Schedule",[],
+				function(tx,result){
+					for(var i=0; i<result.rows.length; i++)
+					{
+						var row = result.rows.item(i);
+						if(row['year'] == year && row['month'] == month && row['date'] == date)
+							{
+								if(row['type'] == "0")
+									$("#personal").append("<li><a href='#detail' onclick='setDetailSchedule(this.id)' id='"+row['id']+"'> "+row['title']+" </a></li>");
+
+								if(row['type'] == "1")
+									$("#group").append("<li><a href='#detail' onclick='setDetailSchedule(this.id)'  id='"+row['id']+"'> "+row['title']+" </a></li>");
+									
+								//$("#personal").listview("refresh");
+								//$('#personal').listview().listview('refresh');
+							}
+					}
+					$('#personal').listview().listview('refresh');
+					$('#group').listview().listview('refresh');
+				});
+			});
+		$('#personal').listview().listview('refresh');
+		$('#group').listview().listview('refresh');
+	}
+	
+	function deleteTable(){
+		db.transaction(function(tx){
+		tx.executeSql("drop table Schedule");
+		});
+	}
+
+	createDB();
+	
+	createTable_schedule();
+		
+	//selectSchedule("2015","5","24");
+	
+	//deleteTable();
+	
+	function setDetailSchedule(id) {
+		db.transaction(function(tx){
+			tx.executeSql("select * from Schedule",[],
+				function(tx,result){
+					for(var i=0; i<result.rows.length; i++)
+					{
+						var row = result.rows.item(i);
+						if(row['id'] == id)
+							{
+								document.getElementById("detail_textbox").innerHTML = row['title'];
+								document.getElementById("contents").innerHTML = "Contents : " +row['contents'];
+								document.getElementById("time").innerHTML = "Time : " +row['year'] + "/" +row['month'] + "/" + row['date'] + "  " + row['hour'] + ":" + row['minute'];
+								document.getElementById("place").innerHTML = "Place : " +row['place'];
+							}
+					}
+				});
+			});
+		}
+
+	function insert(){
+		var date = $('#my_date').val();
+		var date_tmp = date.split("-");
+		var year = date_tmp[0];
+		var month = date_tmp[1];
+		var day = date_tmp[2];
+
+		var time = $('#my_time').val();
+		var time_tmp = time.split(":");
+		var hour = time_tmp[0];
+		var minute = time_tmp[1];
+
+		var title = $('#my_title').val();
+		var contents = $('#my_contents').val();
+		var place = $('#my_place').val();
+
+		var alarm_value = document.getElementById("my_alarm");
+		var alarm = alarm_value.options[alarm_value .selectedIndex].value;
+
+		insertSchedule(year,month,day,hour,minute,title,contents,place,0);
+		setCalender(year,month-1,day,hour,minute,title,place,alarm);
+		document.getElementById('my_date').value = "";
+		document.getElementById('my_time').value = "";
+		document.getElementById('my_title').value = "";
+		document.getElementById('my_contents').value = "";
+		document.getElementById('my_place').value = "";
+		}
+
+   	var gAddressbook = tizen.contact.getDefaultAddressBook();
+   	var sortingMode = new tizen.SortMode('name.firstName', 'ASC');
+   	var phoneFilter = new 	tizen.AttributeFilter('phoneNumbers.number','CONTAINS', '');
+   	
+   	function error(err){}
+   	function success(contact){
+   		//document.getElementById("phone").innerHTML = "in";
+   		//var val, val1, val2, val3;
+   		//val = con[0].phoneNumbers[0].number;
+   		//val1 = con[0].name.firstName;
+   		//val2 = con[0].name.lastName;
+   		//val3 = con[3].phoneNumbers[0].number;
+   		//document.getElementById("phone").innerHTML = val;
+   		//document.getElementById("phone1").innerHTML = val1;
+   		//document.getElementById("phone2").innerHTML = val2;
+   		//document.getElementById("phone3").innerHTML = val3;
+   		//document.getElementById("test").innerHTML = "Paragraph changed!";
+   		//$("#contactlist").append("<input type='checkbox' name='checkbox' id='checkbox' data-mini='true'><label for='checkbox'> TWO </label>");
+   		$("#contactlist").html("");
+   		for(var i=0; i<contact.length; i++)
+   	   	{
+   			$("#contactlist").append("<label><input type='checkbox' name='checkbox"+i+"' id='checkbox"+i+"'> "+contact[i].name.firstName+" "+contact[i].phoneNumbers[0].number+" </label>");
+   	  	}
+   		//$('#contactlist').listview().listview('refresh');
+   		$('#contactlist').listview().listview('refresh').trigger('create');
+   	}
+	function getContact(){
+   		gAddressbook.find(success, error, phoneFilter, sortingMode);
+	}
+
+	function setNotification() {
+		 try {
+		      var notificationDict = {
+		                  content : "This is a simple notification.",
+		                  iconPath : "images/image1.jpg",
+		                  soundPath : "music/Over the horizon.mp3",
+		                  vibration : true,
+		                  ledColor : "#FFFF00",
+		                  ledOnPeriod: 1000,
+		                  ledOffPeriod : 500 };
+
+		      var notification = new tizen.StatusNotification("SIMPLE",
+		                  "Simple notification", notificationDict);
+
+		      tizen.notification.post(notification);
+		 } catch (err) {
+		      console.log (err.name + ": " + err.message);
+		 }
+	}
+
+	function setCalender(year,month,date,hour,minute,title,place,alarm_value){
+
+		var alarm = new tizen.CalendarAlarm(new tizen.TimeDuration(alarm_value, "MINS"), "SOUND");
+
+		var event = new tizen.CalendarEvent({
+			description: title,
+            startDate: new tizen.TZDate(year,month,date,hour,minute), 
+            //duration: new tizen.TimeDuration(1, "HOURS"),
+            visibility: 'CONFIDENTIAL',
+            priority: 'HIGH',
+            location: place,
+            alarms: [alarm]
+		});
+
+		var calendar = tizen.calendar.getDefaultCalendar("EVENT");
+		calendar.add(event);
+		}
+	</script>
+</body>
+</html>

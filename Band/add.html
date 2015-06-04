@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title> Schedule Band </title>
+
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="js/jquerymobile-swipeupdown.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+ 	<link rel="stylesheet" href="css/jquery.mobile.min.css" /> 
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<div data-role="page" id="add">
+    	<div data-role="header" align="center">
+        	<h1 id="textbox"> 일정 추가 </h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+		<div data-role="collapsibleset" data-theme="a" data-content-theme="a">
+			<div data-role="collapsible">
+				<h1>날짜</h1>
+				<input id="my_date" type="date" data-role="datebox" data-options='{"mode": "datebox", "overrideDateFormat": "%m/%d/%Y"}' />
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>시간</h1>
+				<input id="my_time" type="time" data-role="timebox"/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>제목</h1>
+				<input id="my_title" type="text" placeholder="일정 제목을 입력하세요."/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>내용</h1>
+				<input id="my_contents" type="text" placeholder="일정 내용을 입력하세요."/>
+			</div>
+			
+			<div data-role="collapsible">
+				<h1>장소</h1>
+				<input id="my_place" type="text" placeholder="일정 장소를 입력하세요."/>
+			</div>
+			
+		</div>	
+    	</div><!-- /content -->
+		
+		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="test()"> Ok </a></li>
+				<li><a href="index.html" class="ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
+			</ul>
+		</div>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	<script>
+	function test(){
+		var date = $('#my_date').val();
+		var date_tmp = date.split("-");
+		var year = date_tmp[0];
+		var month = date_tmp[1];
+		var day = date_tmp[2];
+
+		var time = $('#my_time').val();
+		var time_tmp = time.split(":");
+		var hour = time_tmp[0];
+		var minute = time_tmp[1];
+
+		var title = $('#my_title').val();
+		var contents = $('#my_contents').val();
+		var place = $('#my_place').val();
+
+		insertSchedule(year,month,day,hour,minute,title,contents,place,0);
+		}
+
+
+	</script>
+	
+	
+</body>
+</html>
