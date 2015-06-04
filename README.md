@@ -1,0 +1,2 @@
+# MobileServicePlatform_Team1
+TizenProject
