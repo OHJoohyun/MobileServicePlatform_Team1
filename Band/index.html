@@ -16,6 +16,7 @@
 </head>
 
 <body onload="getToday()">
+	<!---------------------------------------------------------- MAIN PAGE ---------------------------------------------------------->
 	<div data-role="page" id="main">
     	<div data-role="header" align="center" id="main_header">
     		<h1 id="textbox"></h1>
@@ -43,7 +44,7 @@
 		</div> <!-- /footer  -->
 	</div><!-- /page -->
 
-	<!-- Detail Page -->
+	<!---------------------------------------------------------- DETAIL PAGE ---------------------------------------------------------->
 	<div data-role="page" id="detail">
     	<div data-role="header" align="center">
         	<h1 id="detail_textbox"></h1>
@@ -57,8 +58,7 @@
 				<li><a href="#contact" data-rel="dialog" onclick="getContact()"><center>SHARE</center></a></li>
 			</ul>
     	</div><!-- /content -->
-		
-		
+	
 		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
 		<div data-role="navbar">
 			<ul>
@@ -68,6 +68,9 @@
 		</div><!-- /footer -->
 	</div><!-- /page -->
 		
+		
+		
+	<!---------------------------------------------------------- ADD PAGE ---------------------------------------------------------->	
 	<div data-role="page" id="add">
     	<div data-role="header" align="center">
         	<h1 id="textbox"> 일정 추가 </h1>
@@ -124,6 +127,8 @@
 		</div><!-- /footer -->
 	</div><!-- /page -->
 	
+	
+	<!---------------------------------------------------------- CONTACT PAGE ---------------------------------------------------------->
 	<div data-role="page" id="contact">
     	<div data-role="header" align="center">
         	<h1 id="textbox"> 연락처 </h1>
@@ -143,12 +148,9 @@
 			</ul>
 		</div>
 		</div><!-- /footer -->
-		
-
 	</div><!-- /page -->
 	
  	<script>
-		
 		var _date = getDate();
 		var _month = getMonth();
 		var _year = getYear();
@@ -255,10 +257,6 @@
 	createDB();
 	
 	createTable_schedule();
-		
-	//selectSchedule("2015","5","24");
-	
-	//deleteTable();
 	
 	function setDetailSchedule(id) {
 		db.transaction(function(tx){
@@ -338,26 +336,6 @@
    		gAddressbook.find(success, error, phoneFilter, sortingMode);
 	}
 
-	function setNotification() {
-		 try {
-		      var notificationDict = {
-		                  content : "This is a simple notification.",
-		                  iconPath : "images/image1.jpg",
-		                  soundPath : "music/Over the horizon.mp3",
-		                  vibration : true,
-		                  ledColor : "#FFFF00",
-		                  ledOnPeriod: 1000,
-		                  ledOffPeriod : 500 };
-
-		      var notification = new tizen.StatusNotification("SIMPLE",
-		                  "Simple notification", notificationDict);
-
-		      tizen.notification.post(notification);
-		 } catch (err) {
-		      console.log (err.name + ": " + err.message);
-		 }
-	}
-
 	function setCalender(year,month,date,hour,minute,title,place,alarm_value){
 
 		var alarm = new tizen.CalendarAlarm(new tizen.TimeDuration(alarm_value, "MINS"), "SOUND");
@@ -389,6 +367,29 @@
 		}
 		
 	}
+
+	/* NOTIFICATION SAMPLE
+	function setNotification() {
+		 try {
+		      var notificationDict = {
+		                  content : "This is a simple notification.",
+		                  iconPath : "images/image1.jpg",
+		                  soundPath : "music/Over the horizon.mp3",
+		                  vibration : true,
+		                  ledColor : "#FFFF00",
+		                  ledOnPeriod: 1000,
+		                  ledOffPeriod : 500 };
+
+		      var notification = new tizen.StatusNotification("SIMPLE",
+		                  "Simple notification", notificationDict);
+
+		      tizen.notification.post(notification);
+		 } catch (err) {
+		      console.log (err.name + ": " + err.message);
+		 }
+	}
+	*/
+
 	</script>
 </body>
 </html>
