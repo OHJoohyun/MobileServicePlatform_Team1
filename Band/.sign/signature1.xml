@@ -8,7 +8,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>9mylKWQK1w9Yzji6rsyUdXQTiYioEehWaoeAlvPbjzk=</DigestValue>
+<DigestValue>6dV3prL3K8uApeIreCAVWO6loQ7YzKKBAKBp0Sa1QeY=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>qXkaHbV58MKUe7p/Vg4H4SExSWmJc9QXZeAoQQPKwLQ=</DigestValue>
+<DigestValue>PDnZK9i9TPJ6ie0EdMPENLjH8+M15RkAIgwo/PkGsTw=</DigestValue>
 </Reference>
 <Reference URI="js%2Fjquery-1.9.1.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -54,13 +54,17 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>cR5vVLU94wYx1GlX49Z9Dq49n8CiVxTDPaZVuvsgnk8=</DigestValue>
 </Reference>
+<Reference URI="login.html">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>GsjVMOY14mzTY5DDFq46Th8mMSxnWJa7umU96ZtpGdw=</DigestValue>
+</Reference>
 <Reference URI="map.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>XK4gOmG6OwpvBMJ5XKMkKS2t9shfjOSlXfcVCBCfMx8=</DigestValue>
 </Reference>
 <Reference URI="start.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>RvlR+LwaWu5vgh/Ikv91yl6QW23R9CRCm/z+sRpGyZk=</DigestValue>
+<DigestValue>Eel5Yssb25Wg1IvbzHPt3pC4M5meckv0pjdDZ/rCiF8=</DigestValue>
 </Reference>
 <Reference URI="version.txt">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -75,11 +79,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-uipFV/amZMtd8y6KBkJ7poT4UcYOim2YT/1gO0+ebRYiNdmRmon/dfKLW2iYw4KGJeQb71INfmxy
-0eVO11ULs4z3FR0GktqX187LpZv9N3ivt0W2x/oWSuTliDxCFH0bv1KsdvgpJabirCvTxj/wFQcB
-2aCPRqbmR3QIqIoL8SqiJv5GDFQj6Z4ueFr27z+KRheDP789QxWi5FSMxn0NHOJSYHxH+5i/FSf1
-goeR1TYzAJeziJHfeoS92abj0sCWX/VApjEikpeY/Y4zQv9Uqb8ztkv9+8PhEhaLPSqJluwOGS7s
-6QZO9aQVu4ZODOkWe22xWIphnCtn0hEJN6z8Ag==
+UPM2aaXN7Ab+v9jpFjxTs741YnyPkYTI8EiyFRVww73NLMhpcV5yg1qsXep8p/7uEkNBjB90PCHf
+IuZ2zihhGNkpgBIx/iH+dlXg/u8PJVYJehIFVXIJjrYHewmzQamGzAOADZ/pDRJuOhYq6UAxiAHe
+sZiZfEwNQ+AN0QqzB5UwHzl2Ema/b1kfy3N+xrjHjfbxmaUoa9L7NbkfZ0RwrLqu6evv7yxRTGdj
+9/2a/CFqDWwtKa5nNqGOy1aLY1tUl2pdCy44z+75Ahp4lOt5EOirPwOO38ZmAFSodKd/ZoCPZ6Vt
+3I3x7AgDbxGh8+gsyeFaWl+k7DlA9GiVhlPmNg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

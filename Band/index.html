@@ -67,9 +67,7 @@
 		</div>
 		</div><!-- /footer -->
 	</div><!-- /page -->
-	
-	
-	
+		
 	<div data-role="page" id="add">
     	<div data-role="header" align="center">
         	<h1 id="textbox"> 일정 추가 </h1>
@@ -119,14 +117,12 @@
 		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
 		<div data-role="navbar">
 			<ul>
-				<li><a href="index.html" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="insert()"> Ok </a></li>
-				<li><a href="index.html" class="ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
+				<li><a href="#main" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="insert()"> Ok </a></li>
+				<li><a href="#main" class="ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
 			</ul>
 		</div>
 		</div><!-- /footer -->
 	</div><!-- /page -->
-	
-	
 	
 	<div data-role="page" id="contact">
     	<div data-role="header" align="center">
@@ -136,18 +132,14 @@
     	<div data-role="content">
 	    	<form id="contactlist">
 	    	
-			</form>
-			
-			
-			
-			
+			</form>		
     	</div><!-- /content -->
     	
 		<div data-role="footer" data-id="fool" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="index.html" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus"> Ok </a></li>
-				<li><a href="index.html" class="ui-btn ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
+				<li><a href="#main" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="setCheckedContact()"> Ok </a></li>
+				<li><a href="#main" class="ui-btn ui-btn-b ui-corner-all" data-icon="back"> Cancel </a></li>
 			</ul>
 		</div>
 		</div><!-- /footer -->
@@ -155,16 +147,14 @@
 
 	</div><!-- /page -->
 	
-	
-
  	<script>
+		
 		var _date = getDate();
 		var _month = getMonth();
 		var _year = getYear();
 		var id = 0;
+		var contact_number;
 
-		
-  
 		function getDay(){
 			var d = new Date();
 		  	var year = d.getFullYear();
@@ -323,6 +313,7 @@
    	
    	function error(err){}
    	function success(contact){
+   		contact_number = contact.length;
    		//document.getElementById("phone").innerHTML = "in";
    		//var val, val1, val2, val3;
    		//val = con[0].phoneNumbers[0].number;
@@ -338,7 +329,7 @@
    		$("#contactlist").html("");
    		for(var i=0; i<contact.length; i++)
    	   	{
-   			$("#contactlist").append("<label><input type='checkbox' name='checkbox"+i+"' id='checkbox"+i+"'> "+contact[i].name.firstName+" "+contact[i].phoneNumbers[0].number+" </label>");
+   			$("#contactlist").append("<label><input type='checkbox' name='checkbox' id='checkbox"+i+"' value='"+contact[i].phoneNumbers[0].number+"'> "+contact[i].name.firstName+" "+contact[i].phoneNumbers[0].number+" </label>");
    	  	}
    		//$('#contactlist').listview().listview('refresh');
    		$('#contactlist').listview().listview('refresh').trigger('create');
@@ -384,6 +375,20 @@
 		var calendar = tizen.calendar.getDefaultCalendar("EVENT");
 		calendar.add(event);
 		}
+
+	function setCheckedContact(){
+		//document.getElementById("c").value = ""
+		var checked_contact = [];
+		var j = 0;
+		for(var i=0; i<contact_number; i++){
+			if(document.getElementById('checkbox'+i).checked == true)
+			{
+				checked_contact[j] = document.getElementById('checkbox'+i).value;
+				j++;
+			}
+		}
+		
+	}
 	</script>
 </body>
 </html>

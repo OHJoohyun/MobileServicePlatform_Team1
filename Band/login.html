@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Insert title here</title>
+	
+    <title> Schedule Band </title>
+
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="js/jquerymobile-swipeupdown.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+ 	<link rel="stylesheet" href="css/jquery.mobile.min.css" /> 
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<div data-role="page" id="login">
+    	<div data-role="header" align="center">
+        	<h1> Login </h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+	    	<label> ID </label>
+	    	<input type="text" id="login_id">
+	    	<label> PASSWORD</label>
+	    	<input type="password" id="login_passwd">
+    	</div><!-- /content -->
+		
+		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" > Login </a></li>
+				<li><a href="#signup" data-rel="dialog" class="ui-btn-b ui-corner-all" data-icon="back"> Sign up </a></li>
+			</ul>
+		</div>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	<div data-role="page" id="signup">
+    	<div data-role="header" align="center">
+        	<h1> SignUp </h1>
+    	</div><!-- /header -->
+    
+    	<div data-role="content">
+	    	<label> ID </label>
+	    	<input type="text" id="id">
+	    	<label> PASSWORD</label>
+	    	<input type="password" id="passwod=rd">
+	    	<label> Phone Number</label>
+	    	<input type="tel" id="phonenumber">
+
+			<div><center>
+			    <div class="ui-block-a"><a href="#login" class="ui-btn ui-corner-all">OK</a></div>
+			    <div class="ui-block-b"><a href="#login" class="ui-btn ui-corner-all">Cancel</a></div>
+			</center></div>
+					
+    	</div><!-- /content -->
+    	
+    	
+		
+
+	</div><!-- /page -->
+</body>
+</html>
