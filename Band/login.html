@@ -13,7 +13,9 @@
  	<link rel="stylesheet" href="css/jquery.mobile.min.css" /> 
     <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
+	
 	<div data-role="page" id="login">
     	<div data-role="header" align="center">
         	<h1> Login </h1>
@@ -29,7 +31,7 @@
 		<div data-role="footer" data-id="fool" data-position="fixed" data-tap-toggle="false" >
 		<div data-role="navbar">
 			<ul>
-				<li><a href="#" data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" > Login </a></li>
+				<li><button data-role="button" class="ui-btn ui-btn-b ui-corner-all" data-icon="plus" onclick="login()"> Login </button></li>
 				<li><a href="#signup" data-rel="dialog" class="ui-btn-b ui-corner-all" data-icon="back"> Sign up </a></li>
 			</ul>
 		</div>
@@ -39,23 +41,79 @@
 	<div data-role="page" id="signup">
     	<div data-role="header" align="center">
         	<h1> SignUp </h1>
+        	
     	</div><!-- /header -->
     
     	<div data-role="content">
 	    	<label> ID </label>
-	    	<input type="text" id="id">
+	    	<input type="text" id="signup_id">
 	    	<label> PASSWORD</label>
-	    	<input type="password" id="passwod=rd">
+	    	<input type="password" id="signup_password">
 	    	<label> Phone Number</label>
-	    	<input type="tel" id="phonenumber">
+	    	<input type="tel" id="signup_phone">
 
 			<div><center>
-			    <div class="ui-block-a"><a href="#login" class="ui-btn ui-corner-all">OK</a></div>
+			    <div class="ui-block-a"><a href="#login" class="ui-btn ui-corner-all" onclick="signup()">OK</a></div>
 			    <div class="ui-block-b"><a href="#login" class="ui-btn ui-corner-all">Cancel</a></div>
 			</center></div>
-					
+			
     	</div><!-- /content -->
-    	
 	</div><!-- /page -->
+
+	<script>
+
+	/*
+	function test() {
+	   var client = new XMLHttpRequest();
+	   client.open("GET", "https://peaceful-springs-2781.herokuapp.com/test");
+	   client.send();
+	   document.getElementById("ttt").innerHTML = "OKOKOK";
+	   alert("Hello! I am an alert box!!");
+	}
+	*/
+
+	function login() {
+		var loginid = $('#login_id').val();
+		var loginpassword = $('#login_passwd').val();
+
+		$.post("https://peaceful-springs-2781.herokuapp.com/logintry",{userId: loginid, userPass: loginpassword}, function(data){
+            if(data==="success")
+                {
+					alert("로그인 성공!!!");
+					location.href="index.html";
+					location.href = './index.html?'+loginid;
+                }
+            else if(data==="noresult")
+                {
+                	alert("아이디가 존재하지 않습니다.");
+                	document.getElementById("login_id").innerHTML = "";
+                	document.getElementById("login_passwd").innerHTML = "";
+                }
+            else if (data==="wrongpassword")
+                {
+					alert("비밀번호가 틀립니다.");
+					document.getElementById("login_passwd").innerHTML = "";
+                }
+          });
+		 //document.getElementById("ttt").innerHTML = "OKOKOK";
+		}
+
+	function signup() {
+		var id = $('#signup_id').val();
+		var password = $('#signup_password').val();
+		var phone = $('#signup_phone').val();
+
+		$.post("https://peaceful-springs-2781.herokuapp.com/login",{userId: id, userPass: password}, function(data){
+            if(data==="yes")
+                {
+					alert("회원가입 성공!!!");
+                }
+            else
+                {
+            		alert("회원가입 실패!!!");
+                }
+          });
+		}
+	</script>
 </body>
 </html>
