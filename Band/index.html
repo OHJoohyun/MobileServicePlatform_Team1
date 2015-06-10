@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
     <script type="text/javascript" src="js/jquerymobile-swipeupdown.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/socket.io-1.3.5.js"></script>
  	<link rel="stylesheet" href="css/jquery.mobile.min.css" /> 
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -441,6 +442,23 @@
 			}
 		}
 
+		//alert(checked_contact[1]);
+
+		jQuery.ajaxSettings.traditional = true;
+		
+		$.post("https://peaceful-springs-2781.herokuapp.com/checkinvite",{userNum: myPhone, inviteList: checked_contact, groupDate: date, groupName: title, groupContent: contents, groupLocation: place}, function(data){
+            if(data==="yes")
+                {
+					alert("초대 성공!!!");
+                }
+            else
+                {
+            		alert("초대 실패!!!");
+                }
+          });
+		
+		
+		//user_number: myPhone, invite_list: checked_contact[], group_date: date[], group_name: title, group_content: contents, group_location: place;
 		//var url = location.toString();
 		//var str = url.split('?');
 		//var tmp = str[1].split('#');
@@ -453,7 +471,15 @@
 	}
 
 	function invitation() {
-		confirm("초대 확인");
+		var ok = confirm("초대 확인");
+		if(ok == true)
+			{
+				
+			}
+		else 
+			{
+
+			}
 		}
 
 	function login() {
@@ -475,8 +501,9 @@
                 }
     		else
            	 	{
-					myPhone = data;
+    				myPhone = data;
 					alert("로그인 성공!!!");
+					server();
 					location.href="#main";
 					//location.href = './#main?'+loginid;
             	}
@@ -493,6 +520,9 @@
             if(data==="yes")
                 {
 					alert("회원가입 성공!!!");
+					document.getElementById("signup_id").innerHTML = "";
+					document.getElementById("signup_password").innerHTML = "";
+					document.getElementById("signup_phone").innerHTML = "";
                 }
             else
                 {
@@ -500,6 +530,37 @@
                 }
           });
 		}
+
+		//var phone = myPhone;
+ 	 function server() {
+        var server = io.connect('https://peaceful-springs-2781.herokuapp.com/');
+
+        server.emit("join", myPhone);
+    
+        server.on("update", function(data) {
+            //console.log(data);
+            for(var i=0; i< data.length; i++){
+                //confirm("초대한 사람 : " + data[i].sender);
+                var ok = confirm("초대한 사람 :" + data[i].sender + "\n" + "모임 날짜 : " + data[i].year+"년"+data[i].month+"월"+data[i].day+"일"+data[i].hour+"시"+data[i].sec+"분" + "\n" + "모임 이름 : " + data[i].groupname + "\n"
+                        + "모임 내용 : " + data[i].groupcontent + "\n" + "모임 장소 : " + data[i].grouplocation);
+                //document.getElementById("tttt").innerHTML = data[i].sender;
+                //console.log("모임 날짜 : " + data[i].year+"년"+data[i].month+"월"+data[i].day+"일"+data[i].hour+"시"+data[i].sec+"분");
+                //console.log("모임 이름 : " + data[i].groupname);
+                //console.log("모임 내용 : " + data[i].groupcontent);
+                //console.log("모임 장소 : " + data[i].grouplocation);
+                if(ok == true)
+                    {
+            			insertSchedule(data[i].year, data[i].month, data[i].day, data[i].hour, data[i].sec, data[i].groupname, data[i].groupcontent, data[i].grouplocation,1);
+                    }
+                else 
+                    {
+
+                    }
+            }   
+        });
+       server.emit("yesOrNo", myPhone);
+ 	 }
+   
 
 	/* NOTIFICATION SAMPLE
 	function setNotification() {
