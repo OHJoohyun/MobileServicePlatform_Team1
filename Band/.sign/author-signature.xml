@@ -8,7 +8,7 @@
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>8M2O+IYEUWt0SeB179imgSyy1685e8eIgun5i9QYHwY=</DigestValue>
+<DigestValue>B9J4l7o0qjjTgJJtaq3kdpI8jCxkMfSOUQNK3n6TjgE=</DigestValue>
 </Reference>
 <Reference URI="contact.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -28,7 +28,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>0//876TikcUCi2lfN008R9xEJBy0UCRq9GNWL6WDm3Q=</DigestValue>
+<DigestValue>FC0KhtkW6ZeiQasSCmmkDASqH57Cx+hD5O18R0KsEbY=</DigestValue>
 </Reference>
 <Reference URI="js%2Fjquery-1.9.1.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -64,7 +64,7 @@
 </Reference>
 <Reference URI="start.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Eel5Yssb25Wg1IvbzHPt3pC4M5meckv0pjdDZ/rCiF8=</DigestValue>
+<DigestValue>RvlR+LwaWu5vgh/Ikv91yl6QW23R9CRCm/z+sRpGyZk=</DigestValue>
 </Reference>
 <Reference URI="version.txt">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -79,11 +79,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-OMR2xP5QQffJOblY0bfLAnyUCVW36S7+avo82D15nHjQvqdohd7tUa1+QAv5D4BGtEZhMsaxVOuW
-8yNAiBfWxitw+9KxAdKlhXBZunXotlb5ajK7VjDCkzqRJAYqOaQXTYD24wDVUfJguwhnLN1OHuRv
-36oID0WlpcUrFsXKq6AN6R8Gcq5qkgYMVmUjLgeTsDm7qI/NOpqcCYAlc1G6EiR3ChUw5dhdQ9F3
-wOYZoZUGeC/fRSqJIfvQg9FKJxmFIq7iw2eT3HaYzy7zSGFDD0z0DfZHbyk9Y9mRkk/gG7RJpcFI
-3jJX+FNZxOPpyrik/IrU1mx4ecZ3cLHOS6dGYw==
+X8brvkA/w57+eLSOsSyMWe7fHotEM1AAItGEuuC7UaWxs6HqrM1K3MCjEw80IV//+8W3w83qIvol
+OLhqE6PXzUXP2Rv1Gq9B6jkNUIWJmF4PP1QK19RrXS7BOlThaBQyaQqvnTXbQLYKN60AO6/4Szlb
+VcVtndBg5gL8yHUMDO8InjiRQoiwOINoMnINry7MJKmST7sHTC1kxUfR1lB1z7RSbUWRiut/opll
+tVA7m9k1ivWEdbcLitjBKHBwlEAQq6mOyZwgj49zWyyYs/XAwYbirRM6UPHbKvNcle+X0f/sCj9g
+vyMd7eFTuVOFYNrBhNWFf40KC+Cs9Mw0w+OZXw==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -48,7 +48,6 @@
     	<div data-role="header" align="center" id="main_header">
     		<h1 id="textbox"></h1>
     		<a href="#" id="close" data-role="button" data-icon="delete" data-iconpos="notext" onclick="deleteTable()">Close</a>
-    		<button id="invitation" data-role="button" data-icon="cloud" data-iconpos="notext right" onclick="invitation()">Invitation</button>
     	</div><!-- /header -->
     
     	<div data-role="content" id="main_content">
@@ -212,6 +211,7 @@
 		var id = 0;
 		var contact_number;
 		var year, month, day, hour, minute, title, contents, place;
+		var sid;
 		var date = [];
 		var myPhone;
 
@@ -327,6 +327,7 @@
 						var row = result.rows.item(i);
 						if(row['id'] == id)
 							{
+								sid = row['id'];
 								year = row['year'];
 								month = row['month'];
 								day = row['date'];
@@ -456,7 +457,13 @@
             		alert("초대 실패!!!");
                 }
           });
-		
+
+        if(checked_contact.length != 0)
+            {
+    			db.transaction(function(tx){
+    				tx.executeSql("UPDATE Schedule SET type = ? WHERE id = ?", ["1",sid]);
+    				});
+            }
 		
 		//user_number: myPhone, invite_list: checked_contact[], group_date: date[], group_name: title, group_content: contents, group_location: place;
 		//var url = location.toString();
@@ -469,18 +476,6 @@
 		//return checked_contact;
 		//선택된 전화번호 checked_contact
 	}
-
-	function invitation() {
-		var ok = confirm("초대 확인");
-		if(ok == true)
-			{
-				
-			}
-		else 
-			{
-
-			}
-		}
 
 	function login() {
 		var loginid = $('#login_id').val();
@@ -541,7 +536,7 @@
             //console.log(data);
             for(var i=0; i< data.length; i++){
                 //confirm("초대한 사람 : " + data[i].sender);
-                var ok = confirm("초대한 사람 :" + data[i].sender + "\n" + "모임 날짜 : " + data[i].year+"년"+data[i].month+"월"+data[i].day+"일"+data[i].hour+"시"+data[i].sec+"분" + "\n" + "모임 이름 : " + data[i].groupname + "\n"
+                var ok = confirm("초대한 사람 :" + data[i].sender + "\n" + "모임 날짜 : " + data[i].year+"/"+data[i].month+"/"+data[i].day+" "+data[i].hour+":"+data[i].sec + "\n" + "모임 이름 : " + data[i].groupname + "\n"
                         + "모임 내용 : " + data[i].groupcontent + "\n" + "모임 장소 : " + data[i].grouplocation);
                 //document.getElementById("tttt").innerHTML = data[i].sender;
                 //console.log("모임 날짜 : " + data[i].year+"년"+data[i].month+"월"+data[i].day+"일"+data[i].hour+"시"+data[i].sec+"분");
